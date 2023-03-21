@@ -5,23 +5,23 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class cocktailsexp {
-	static Scanner sc = new Scanner(System.in);
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		double literTequila = 45.00;
-		double literLimeJuice = 8.00;
-		double literTriplesec = 20.00;
-		double literVodka = 36.00;
-		double dryVermouth = 18;
-		double gingerBeer = 3;
-
-		double oneOzTequila = literTequila / 33;
-		double oneOzLimeJuice = literLimeJuice / 33;
-		double oneOzTriplesec = literTriplesec / 33;
-		double oneOzVodka = literVodka / 33;
-		double oneOzDryVermouth = dryVermouth / 33;
+//		double literTequila = 45.00;
+//		double literLimeJuice = 8.00;
+//		double literTriplesec = 20.00;
+//		double literVodka = 36.00;
+//		double dryVermouth = 18;
+//		double gingerBeer = 3;
+//
+//		double oneOzTequila = literTequila / 33;
+//		double oneOzLimeJuice = literLimeJuice / 33;
+//		double oneOzTriplesec = literTriplesec / 33;
+//		double oneOzVodka = literVodka / 33;
+//		double oneOzDryVermouth = dryVermouth / 33;
 
 		// Tequila Cocktails
 
@@ -65,7 +65,7 @@ public class cocktailsexp {
 
 		// main menu
 		int selection = 0;
-
+		Scanner sc = new Scanner(System.in);
 		while (selection != 6) {
 
 			System.out.println("What is your favorite liqour?");
@@ -77,12 +77,37 @@ public class cocktailsexp {
 			System.out.println("6) Exit.");
 
 			selection = sc.nextInt();
+			
 				while (selection == 1) {					
 				boolean quit = cockTailselection(tequilaCocktails);
 					if (quit == true) {
 						selection = 0;
 					}
 				}
+				while (selection == 2) {					
+					boolean quit = cockTailselection(vodkaCocktails);
+						if (quit == true) {
+							selection = 0;
+						}
+					}
+				while (selection == 3) {					
+					boolean quit = cockTailselection(rumCocktails);
+						if (quit == true) {
+							selection = 0;
+						}
+					}
+				while (selection == 4) {					
+					boolean quit = cockTailselection(whiskeyCocktails);
+						if (quit == true) {
+							selection = 0;
+						}
+					}
+				while (selection == 5) {					
+					boolean quit = cockTailselection(ginCocktails);
+						if (quit == true) {
+							selection = 0;
+						}
+					}
 
 			if (selection > 6 || selection < 0) {
 				System.out.println("Pick valid option please");
@@ -91,28 +116,29 @@ public class cocktailsexp {
 			if (selection == 6) {
 				System.out.println("Enjoy your drink!");
 			}
+			
 		}
 	}
 
-	public static boolean cockTailselection(Map<String, String> spirit) {		
+	public static boolean cockTailselection(Map<String, String> cocktails) {
+		Scanner sc = new Scanner(System.in);
 		boolean quit = false;		
 		String input;
 		while (!quit) {
 			System.out.println("Enter the cocktail you would like to make ( or 0 to go back)");
-			for (String key : spirit.keySet()) {
+			for (String key : cocktails.keySet()) {
 				System.out.println("- " + key);
-			}
-			
+			}			
 			input = sc.nextLine();
 	            if (input.equals("0")) {
 	                quit = true;
-			} else if (spirit.containsKey(input)) {
-				System.out.println("To make a " + input + ": " + spirit.get(input) + "\r");
+			} else if (cocktails.containsKey(input)) {
+				System.out.println("To make a " + input + ": " + "\n" + "****************"  + cocktails.get(input) + "\r" + "****************");
 			} else {
 				System.out.println("Invalid key. Please try again.");
 			}
 
-		}
+		}		
 		return quit;
 	}
 }
